@@ -12,13 +12,14 @@ export type BillboardColumn = {
 export const columns: ColumnDef<BillboardColumn>[] = [
   {
     accessorKey: "label",
-    header: "Status",
+    header: "Label",
   },
   {
     accessorKey: "createdAt",
     header: "Date",
   },
   {
+    accessorKey: "Actions",
     id: "actions",
     cell: ({ row }) => <CellAction data={row.original} />,
   },
