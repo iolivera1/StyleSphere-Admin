@@ -24,7 +24,6 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/alert-modal";
-import { useOrigin } from "@/hooks/use-origin";
 import {
   Select,
   SelectContent,
@@ -51,7 +50,6 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
 }) => {
   const params = useParams();
   const router = useRouter();
-  const origin = useOrigin();
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
