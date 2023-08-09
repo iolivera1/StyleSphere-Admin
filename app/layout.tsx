@@ -8,8 +8,8 @@ import { ToasterProvider } from "@/providers/toast-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "StyleSphere - Unleash Your Fashion Universe",
-  description: "StyleSphere - Unleash Your Fashion Universe",
+  title: "StyleSphere - Admin Panel",
+  description: "Admin Panel for StyleSphere",
 };
 
 export default function RootLayout({
