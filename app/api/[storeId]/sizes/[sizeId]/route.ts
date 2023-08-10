@@ -12,7 +12,7 @@ export async function GET(
       return new NextResponse("Size id is required", { status: 400 });
     }
 
-    const size = await prismadb.size.findMany({
+    const size = await prismadb.size.findFirst({
       where: {
         id: params.sizeId,
       },

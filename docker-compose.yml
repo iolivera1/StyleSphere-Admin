@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: .
+    image: iolivera1/stylesphere-admin
+    container_name: stylesphere-admin
+    restart: always
+    ports:
+      - "3000:3000"

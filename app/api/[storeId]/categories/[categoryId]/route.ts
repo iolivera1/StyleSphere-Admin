@@ -12,7 +12,7 @@ export async function GET(
       return new NextResponse("Category id is required", { status: 400 });
     }
 
-    const category = await prismadb.category.findMany({
+    const category = await prismadb.category.findFirst({
       where: {
         id: params.categoryId,
       },

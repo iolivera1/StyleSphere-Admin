@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {
@@ -119,7 +120,7 @@ model Order {
   orderItems OrderItem[]
   isPaid     Boolean     @default(false)
   phone      String      @default("")
-  address     String      @default("")
+  address    String      @default("")
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
 

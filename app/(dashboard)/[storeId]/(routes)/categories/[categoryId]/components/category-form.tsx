@@ -41,7 +41,7 @@ type CategoryFormValues = z.infer<typeof formSchema>;
 
 interface CategoryFormProps {
   initialData: Category | null;
-  billboards: Billboard | null;
+  billboards: Billboard[] | null;
 }
 
 export const CategoryForm: React.FC<CategoryFormProps> = ({
@@ -170,7 +170,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      {billboards.map((billboard) => (
+                      {billboards?.map((billboard) => (
                         <SelectItem key={billboard.id} value={billboard.id}>
                           {billboard.label}
                         </SelectItem>

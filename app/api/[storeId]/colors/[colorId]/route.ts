@@ -12,7 +12,7 @@ export async function GET(
       return new NextResponse("Color id is required", { status: 400 });
     }
 
-    const color = await prismadb.color.findMany({
+    const color = await prismadb.color.findFirst({
       where: {
         id: params.colorId,
       },
