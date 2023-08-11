@@ -160,7 +160,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
               )}
             />
           </div>
-          <Button disabled={loading} className="ml-auto" type="submit">
+          <Button disabled className="ml-auto" type="submit">
             {action}
           </Button>
         </form>
