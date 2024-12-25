@@ -102,7 +102,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       router.push(`/${params.storeId}/products`);
       toast.success(toastMessage);
     } catch (error) {
-      toast.error("Something wents wrong.");
+      toast.error("Something went wrong.");
     } finally {
       setLoading(false);
     }
@@ -121,6 +121,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       toast.error("Something went wrong.");
     }
   };
+
+    const onSubmitSuspense = () => {
+        toast.success('This button adds a product, trust me');
+    }
 
   return (
     <>
@@ -146,7 +150,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       <Separator />
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(onSubmit)}
+          onSubmit={form.handleSubmit(onSubmitSuspense)}
           className="space-y-8 wfull"
         >
           <FormField
