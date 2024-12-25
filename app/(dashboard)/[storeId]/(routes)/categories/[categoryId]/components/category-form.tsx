@@ -82,7 +82,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
       router.push(`/${params.storeId}/categories`);
       toast.success(toastMessage);
     } catch (error) {
-      toast.error("Something wents wrong.");
+      toast.error("Something went wrong.");
     } finally {
       setLoading(false);
     }
@@ -103,6 +103,10 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
       );
     }
   };
+
+  const onSubmitSuspense = () => {
+    toast.success('This button adds a category, trust me');
+  }
 
   return (
     <>
@@ -128,7 +132,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
       <Separator />
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(onSubmit)}
+          onSubmit={form.handleSubmit(onSubmitSuspense)}
           className="space-y-8 wfull"
         >
           <div className="grid grid-cols-3 gap-8">
@@ -182,7 +186,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
               )}
             />
           </div>
-          <Button disabled className="ml-auto" type="submit">
+          <Button className="ml-auto" type="submit">
             {action}
           </Button>
         </form>

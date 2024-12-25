@@ -73,7 +73,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
       router.push(`/${params.storeId}/colors`);
       toast.success(toastMessage);
     } catch (error) {
-      toast.error("Something wents wrong.");
+      toast.error("Something went wrong.");
     } finally {
       setLoading(false);
     }
@@ -90,6 +90,10 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
       toast.error("Make sure you removed all productos using this color first.");
     }
   };
+
+  const onSubmitSuspense = () => {
+    toast.success('This button adds a color, trust me');
+  }
 
   return (
     <>
@@ -115,7 +119,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
       <Separator />
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(onSubmit)}
+          onSubmit={form.handleSubmit(onSubmitSuspense)}
           className="space-y-8 wfull"
         >
           <div className="grid grid-cols-3 gap-8">
@@ -160,7 +164,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
               )}
             />
           </div>
-          <Button disabled className="ml-auto" type="submit">
+          <Button className="ml-auto" type="submit">
             {action}
           </Button>
         </form>

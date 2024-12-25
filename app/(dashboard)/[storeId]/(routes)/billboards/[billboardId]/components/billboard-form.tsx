@@ -5,7 +5,7 @@ import axios from "axios";
 import { Billboard } from "@prisma/client";
 import { Trash } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-hot-toast";
@@ -73,7 +73,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       router.push(`/${params.storeId}/billboards`);
       toast.success(toastMessage);
     } catch (error) {
-      toast.error("Something wents wrong.");
+      toast.error("Something went wrong.");
     } finally {
       setLoading(false);
     }
@@ -94,6 +94,10 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       );
     }
   };
+
+  const onSubmitSuspense = () => {
+   toast.success('This button adds a billboard, trust me');
+  }
 
   return (
     <>
@@ -119,7 +123,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       <Separator />
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(onSubmit)}
+          onSubmit={form.handleSubmit(onSubmitSuspense)}
           className="space-y-8 wfull"
         >
           <FormField
@@ -159,7 +163,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
               )}
             />
           </div>
-          <Button disabled className="ml-auto">
+          <Button className="ml-auto">
             {action}
           </Button>
         </form>
