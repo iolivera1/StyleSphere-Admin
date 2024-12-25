@@ -7,12 +7,9 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   Command,
-  CommandEmpty,
   CommandGroup,
-  CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
 } from "@/components/ui/command"
 import {
   Popover,
@@ -66,8 +63,9 @@ export default function StoreSwitcher({ className, items = [] }: StoreSwitcherPr
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandList>
-            <CommandInput placeholder="Search store..." />
-            <CommandEmpty>No store found.</CommandEmpty>
+            {/*Hiding for showcase*/}
+            {/*<CommandInput placeholder="Search store..." />*/}
+            {/*<CommandEmpty>No store found.</CommandEmpty>*/}
             <CommandGroup heading="Stores">
               {formattedItems.map((store) => (
                 <CommandItem
@@ -89,20 +87,21 @@ export default function StoreSwitcher({ className, items = [] }: StoreSwitcherPr
               ))}
             </CommandGroup>
           </CommandList>
-          <CommandSeparator />
-          <CommandList>
-            <CommandGroup>
-              <CommandItem
-                onSelect={() => {
-                  setOpen(false)
-                  storeModal.onOpen()
-                }}
-              >
-                <PlusCircle className="mr-2 h-5 w-5" />
-                Create Store
-              </CommandItem>
-            </CommandGroup>
-          </CommandList>
+          {/*Hiding for showcase*/}
+          {/*<CommandSeparator />*/}
+          {/*<CommandList>*/}
+          {/*  <CommandGroup>*/}
+          {/*    <CommandItem*/}
+          {/*      onSelect={() => {*/}
+          {/*        setOpen(false)*/}
+          {/*        storeModal.onOpen()*/}
+          {/*      }}*/}
+          {/*    >*/}
+          {/*      <PlusCircle className="mr-2 h-5 w-5" />*/}
+          {/*      Create Store*/}
+          {/*    </CommandItem>*/}
+          {/*  </CommandGroup>*/}
+          {/*</CommandList>*/}
         </Command>
       </PopoverContent>
     </Popover>
