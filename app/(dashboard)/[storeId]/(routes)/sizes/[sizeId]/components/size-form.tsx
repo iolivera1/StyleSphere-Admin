@@ -70,7 +70,7 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
       router.push(`/${params.storeId}/sizes`);
       toast.success(toastMessage);
     } catch (error) {
-      toast.error("Something wents wrong.");
+      toast.error("Something went wrong.");
     } finally {
       setLoading(false);
     }
@@ -87,6 +87,9 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
       toast.error("Make sure you removed all productos using this size first.");
     }
   };
+  const onSubmitSuspense = () => {
+    toast.success('This button adds a size, trust me');
+  }
 
   return (
     <>
@@ -112,7 +115,7 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
       <Separator />
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(onSubmit)}
+          onSubmit={form.handleSubmit(onSubmitSuspense)}
           className="space-y-8 wfull"
         >
           <div className="grid grid-cols-3 gap-8">
@@ -151,7 +154,7 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
               )}
             />
           </div>
-          <Button disabled className="ml-auto" type="submit">
+          <Button className="ml-auto" type="submit">
             {action}
           </Button>
         </form>
