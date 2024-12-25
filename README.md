@@ -9,3 +9,4 @@ The StyleSphere Admin Panel offers powerful control over your fashion empire. Ma
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
 ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
+![Cloudinary](https://img.shields.io/badge/Cloudinary-3644b1?style=for-the-badge&logo=Cloudinary&logoColor=white)
