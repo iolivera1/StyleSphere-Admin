@@ -1,18 +1,18 @@
 import prismadb from "@/lib/prismadb";
-
 import { BillboardForm } from "./components/billboard-form";
 
-// Explicitly defining the type for `params` as an object containing `billboardId`
 interface BillboardPageProps {
     params: {
         billboardId: string;
+        storeId: string;
     };
 }
 
 export default async function BillboardPage({ params }: BillboardPageProps) {
+    const { billboardId } = await params;
     const billboard = await prismadb.billboard.findUnique({
         where: {
-            id: params.billboardId,
+            id: billboardId,
         },
     });
 
