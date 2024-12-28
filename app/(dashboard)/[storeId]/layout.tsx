@@ -3,15 +3,14 @@ import { redirect } from "next/navigation";
 
 import prismadb from "@/lib/prismadb";
 import Navbar from "@/components/navbar";
-export default async function DashboardLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: { storeId: string };
-}) {
+
+type Params = Promise<{ storeId: string }>;
+
+export default async function DashboardLayout(props: { children: React.ReactNode; params: Params }) {
+  const params = await props.params;
+  const { storeId } = params;
+
   const { userId } = await auth();
-  const { storeId } = await params;
 
   if (!userId) {
     redirect("/sign-in");
@@ -31,7 +30,7 @@ export default async function DashboardLayout({
   return (
     <>
       <Navbar />
-      {children}
+      {props.children}
     </>
   );
 }

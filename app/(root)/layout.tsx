@@ -3,32 +3,32 @@ import { auth } from "@clerk/nextjs/server";
 
 import prismadb from '@/lib/prismadb';
 
-export default async function SetupLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+type Params = Promise<{ storeId: string }>;
+
+export default async function SetupLayout(props: { children: React.ReactNode; params: Params }) {
+  const params = await props.params;
+  const { storeId } = params;
+
   const { userId } = await auth();
 
   if (!userId) {
     redirect('/sign-in');
   }
 
-  const billboard = await prismadb.billboard
-
   const store = await prismadb.store.findFirst({
     where: {
+      id: storeId,
       userId,
     }
   });
 
   if (store) {
     redirect(`/${store.id}`);
-  };
+  }
 
   return (
     <>
-      {children}
+      {props.children}
     </>
   );
-};
+}
