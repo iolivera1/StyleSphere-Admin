@@ -3,13 +3,15 @@ import { NextResponse } from "next/server";
 
 import prismadb from "@/lib/prismadb";
 
+type Params = Promise<{ storeId: string }>;
+
 export async function PATCH(
   req: Request,
-  { params }: { params: { storeId: string } }
+  { params }: { params: Params }
 ) {
+  const { storeId } = await params;
   try {
     const { userId } = await auth();
-    const { storeId } = await params;
     const body = await req.json();
 
     const { name } = body;
@@ -45,7 +47,7 @@ export async function PATCH(
 
 export async function DELETE(
   _req: Request,
-  { params }: { params: { storeId: string } }
+  { params }: { params: Params }
 ) {
   const { storeId } = await params;
   try {

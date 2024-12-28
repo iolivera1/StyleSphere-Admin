@@ -10,14 +10,17 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
+type Params = Promise<{ storeId: string }>;
+
 export async function OPTIONS() {
   return NextResponse.json({}, { headers: corsHeaders });
 }
 
 export async function POST(
   req: Request,
-  { params }: { params: { storeId: string } }
+  { params }: { params: Params }
 ) {
+  const { storeId } = await params;
   const { productIds } = await req.json();
 
   if (!productIds || productIds.length === 0) {
@@ -49,7 +52,7 @@ export async function POST(
 
   const order = await prismadb.order.create({
     data: {
-      storeId: params.storeId,
+      storeId: storeId,
       isPaid: false,
       orderItems: {
         create: productIds.map((productId: string) => ({
@@ -80,4 +83,4 @@ export async function POST(
   return NextResponse.json({ url: session.url }, {
     headers: corsHeaders
   });
-};
+}
