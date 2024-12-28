@@ -3,13 +3,12 @@ import { auth } from "@clerk/nextjs/server";
 import prismadb from "@/lib/prismadb";
 import { SettingsForm } from "./components/settings-form";
 
-interface SettingsPageProps {
-  params: {
-    storeId: string;
-  };
-}
+type Params = Promise<{ storeId: string }>;
 
-export default async function SettingsPage({ params }: SettingsPageProps) {
+export default async function SettingsPage(props: { params: Params }) {
+  const params = await props.params;
+  const { storeId } = params;
+
   const { userId } = await auth();
 
   if (!userId) {
@@ -18,7 +17,7 @@ export default async function SettingsPage({ params }: SettingsPageProps) {
 
   const store = await prismadb.store.findFirst({
     where: {
-      id: params.storeId,
+      id: storeId,
       userId,
     },
   });
