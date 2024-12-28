@@ -5,14 +5,15 @@ import { formatter } from "@/lib/utils";
 import ProductClient from "./components/client";
 import { ProductsColumn } from "./components/columns";
 
-export default async function ProductPages({
-  params,
-}: {
-  params: { storeId: string };
-}) {
+type Params = Promise<{ storeId: string }>;
+
+export default async function ProductPages(props: { params: Params }) {
+  const params = await props.params;
+  const { storeId } = params;
+
   const products = await prismadb.product.findMany({
     where: {
-      storeId: params.storeId,
+      storeId: storeId,
     },
     include: {
       category: true,

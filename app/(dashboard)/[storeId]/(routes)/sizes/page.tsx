@@ -4,14 +4,15 @@ import prismadb from "@/lib/prismadb";
 import SizeClient from "./components/client";
 import { SizeColumn } from "./components/columns";
 
-export default async function BillboardsPage({
-  params,
-}: {
-  params: { storeId: string };
-}) {
+type Params = Promise<{ storeId: string }>;
+
+export default async function SizesPage(props: { params: Params }) {
+  const params = await props.params;
+  const { storeId } = params;
+
   const sizes = await prismadb.size.findMany({
     where: {
-      storeId: params.storeId,
+      storeId: storeId,
     },
     orderBy: {
       createdAt: "desc",

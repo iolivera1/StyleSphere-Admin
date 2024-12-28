@@ -1,49 +1,49 @@
 import prismadb from "@/lib/prismadb";
-
 import { ProductForm } from "./components/product-form";
 
-export default async function ProductPage({
-  params,
-}: {
-  params: { storeId: string; productId: string };
-}) {
-  const product = await prismadb.product.findUnique({
-    where: {
-      id: params.productId,
-    },
-    include: {
-      images: true,
-    },
-  });
+type Params = Promise<{ storeId: string; productId: string }>;
 
-  const categories = await prismadb.category.findMany({
-    where: {
-      storeId: params.storeId,
-    },
-  });
+export default async function ProductPage(props: { params: Params }) {
+    const params = await props.params;
+    const { storeId, productId } = params;
 
-  const sizes = await prismadb.size.findMany({
-    where: {
-      storeId: params.storeId,
-    },
-  });
+    const product = await prismadb.product.findUnique({
+        where: {
+            id: productId,
+        },
+        include: {
+            images: true,
+        },
+    });
 
-  const colors = await prismadb.color.findMany({
-    where: {
-      storeId: params.storeId,
-    },
-  });
+    const categories = await prismadb.category.findMany({
+        where: {
+            storeId: storeId,
+        },
+    });
 
-  return (
-    <div className="flex-col">
-      <div className="flex-1 space-y-4 p-6 pt-6">
-        <ProductForm
-          categories={categories}
-          colors={colors}
-          sizes={sizes}
-          initialData={product}
-        />
-      </div>
-    </div>
-  );
+    const sizes = await prismadb.size.findMany({
+        where: {
+            storeId: storeId,
+        },
+    });
+
+    const colors = await prismadb.color.findMany({
+        where: {
+            storeId: storeId,
+        },
+    });
+
+    return (
+        <div className="flex-col">
+            <div className="flex-1 space-y-4 p-6 pt-6">
+                <ProductForm
+                    categories={categories}
+                    colors={colors}
+                    sizes={sizes}
+                    initialData={product}
+                />
+            </div>
+        </div>
+    );
 }
