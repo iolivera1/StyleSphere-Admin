@@ -105,7 +105,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
   };
 
   const onSubmitSuspense = () => {
-    toast.success('This button adds a category, trust me');
+    toast.success(`This button ${description}, trust me`);
   }
 
   return (
@@ -144,9 +144,10 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                   <FormLabel>Name</FormLabel>
                   <FormControl>
                     <Input
-                      disabled={loading}
-                      placeholder="Category name"
-                      {...field}
+                        disabled={loading}
+                        placeholder="Category name"
+                        value={field.value}
+                        onChange={field.onChange}
                     />
                   </FormControl>
                   <FormMessage />

@@ -123,7 +123,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   };
 
     const onSubmitSuspense = () => {
-        toast.success('This button adds a product, trust me');
+        toast.success(`This button ${description}, trust me`);
     }
 
   return (

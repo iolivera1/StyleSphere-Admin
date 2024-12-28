@@ -87,8 +87,9 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
       toast.error("Make sure you removed all productos using this size first.");
     }
   };
+
   const onSubmitSuspense = () => {
-    toast.success('This button adds a size, trust me');
+    toast.success(`This button ${description}, trust me`);
   }
 
   return (

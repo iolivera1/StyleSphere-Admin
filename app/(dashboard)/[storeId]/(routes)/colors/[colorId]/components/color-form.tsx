@@ -92,7 +92,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
   };
 
   const onSubmitSuspense = () => {
-    toast.success('This button adds a color, trust me');
+    toast.success(`This button ${description}, trust me`);
   }
 
   return (

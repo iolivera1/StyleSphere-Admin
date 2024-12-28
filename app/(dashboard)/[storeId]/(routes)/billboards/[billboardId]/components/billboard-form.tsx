@@ -96,7 +96,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
   };
 
   const onSubmitSuspense = () => {
-   toast.success('This button adds a billboard, trust me');
+    toast.success(`This button ${description}, trust me`);
   }
 
   return (
@@ -155,7 +155,8 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
                     <Input
                       disabled={loading}
                       placeholder="Billboard label"
-                      {...field}
+                      value={field.value}
+                      onChange={field.onChange}
                     />
                   </FormControl>
                   <FormMessage />
