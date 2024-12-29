@@ -20,10 +20,11 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout(props: { children: React.ReactNode; params: Params }) {
+
   const params = await props.params;
   const { storeId } = params;
-
   const { userId } = await auth();
+
 
   if (!userId) {
     redirect("/sign-in");
@@ -37,7 +38,7 @@ export default async function RootLayout(props: { children: React.ReactNode; par
   });
 
   if (!store) {
-    redirect("/");
+    redirect("/sign-in");
   }
 
   return (
