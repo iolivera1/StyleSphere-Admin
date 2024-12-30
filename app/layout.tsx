@@ -37,8 +37,8 @@ export default async function RootLayout(props: { children: React.ReactNode; par
     },
   });
 
-  if (store) {
-    redirect(`${store.id}`);
+  if (!store) {
+    redirect("/");
   }
 
   return (
